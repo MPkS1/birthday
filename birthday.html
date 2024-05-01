@@ -8,6 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
+            overflow: hidden;
         }
 
         .popup-bg {
@@ -32,6 +33,24 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             text-align: center;
+            animation: bounceInDown 1s ease forwards;
+        }
+
+        @keyframes bounceInDown {
+            0% {
+                transform: translateY(-500px);
+                opacity: 0;
+            }
+            60% {
+                transform: translateY(30px);
+            }
+            80% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .close {
@@ -51,10 +70,90 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            animation: float 2s ease infinite;
         }
 
         button:hover {
             background-color: #45a049;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 80px;
+            background-color: red;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            bottom: -50px;
+            animation: balloonAnim 6s ease infinite;
+        }
+
+        @keyframes balloonAnim {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(0, -50px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .cake {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #f9e35e;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: cakeAnim 3s ease infinite;
+        }
+
+        @keyframes cakeAnim {
+            0% {
+                transform: translate(-50%, 0);
+            }
+            50% {
+                transform: translate(-50%, -20px);
+            }
+            100% {
+                transform: translate(-50%, 0);
+            }
+        }
+
+        .paper-wrap {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            background-color: #f58e6d;
+            bottom: 0;
+            right: -50px;
+            animation: paperAnim 4s ease infinite;
+        }
+
+        @keyframes paperAnim {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(0, -30px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
         }
     </style>
 </head>
@@ -67,6 +166,9 @@
             <h1>Happy Birthday!</h1>
             <p>Dear friend, on your special day, I wish you all the happiness in the world. May your dreams come true and may you always find success in your endeavors.</p>
             <p>Enjoy your day to the fullest!</p>
+            <div class="balloon"></div>
+            <div class="cake"></div>
+            <div class="paper-wrap"></div>
         </div>
     </div>
 
