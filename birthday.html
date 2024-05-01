@@ -32,6 +32,34 @@
     <link rel="stylesheet/less" href="assets/cake.less">
     <script src="assets/less.min.js"></script>
     <script src="config.js"></script>
+    <styles>
+        /* Add your custom CSS styles here */
+
+/* Balloon Animation */
+@keyframes balloon-float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+    100% { transform: translateY(0); }
+}
+
+.balloons {
+    animation: balloon-float 2s ease-in-out infinite;
+}
+
+/* Cake Animation */
+@keyframes color-change {
+    0% { background-color: #f00; }
+    25% { background-color: #0f0; }
+    50% { background-color: #00f; }
+    75% { background-color: #ff0; }
+    100% { background-color: #f00; }
+}
+
+.cake {
+    animation: color-change 5s infinite;
+}
+
+    </styles>
 </head>
 
 <body>
