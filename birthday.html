@@ -3,100 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Wishes</title>
+    <title>Best Birthday Wishes Ever!</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
 
-        .popup-bg {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+        .container {
+            position: relative;
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-
-        .popup {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 80%;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            animation: bounceInDown 1s ease forwards;
-        }
-
-        @keyframes bounceInDown {
-            0% {
-                transform: translateY(-500px);
-                opacity: 0;
-            }
-            60% {
-                transform: translateY(30px);
-            }
-            80% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            color: #888;
-            font-size: 20px;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            animation: float 2s ease infinite;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0);
-            }
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
         .balloon {
             position: absolute;
-            width: 50px;
-            height: 80px;
-            background-color: red;
+            width: 100px;
+            height: 150px;
+            background-color: #f44259;
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            bottom: -50px;
-            animation: balloonAnim 6s ease infinite;
+            animation: balloonAnim 5s ease infinite;
         }
 
         @keyframes balloonAnim {
@@ -111,37 +44,13 @@
             }
         }
 
-        .cake {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background-color: #f9e35e;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: cakeAnim 3s ease infinite;
-        }
-
-        @keyframes cakeAnim {
-            0% {
-                transform: translate(-50%, 0);
-            }
-            50% {
-                transform: translate(-50%, -20px);
-            }
-            100% {
-                transform: translate(-50%, 0);
-            }
-        }
-
-        .paper-wrap {
+        .paper {
             position: absolute;
             width: 200px;
             height: 100px;
-            background-color: #f58e6d;
-            bottom: 0;
-            right: -50px;
-            animation: paperAnim 4s ease infinite;
+            background-color: #ffcd4e;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: paperAnim 7s ease infinite;
         }
 
         @keyframes paperAnim {
@@ -155,30 +64,44 @@
                 transform: translate(0, 0);
             }
         }
+
+        .message {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
-    <button id="showPopupBtn">Open Birthday Wishes</button>
-
-    <div id="popupBg" class="popup-bg">
-        <div id="popup" class="popup">
-            <span class="close" id="closePopupBtn">&times;</span>
+    <div class="container">
+        <div class="balloon"></div>
+        <div class="paper"></div>
+        <div class="message">
             <h1>Happy Birthday!</h1>
             <p>Dear friend, on your special day, I wish you all the happiness in the world. May your dreams come true and may you always find success in your endeavors.</p>
             <p>Enjoy your day to the fullest!</p>
-            <div class="balloon"></div>
-            <div class="cake"></div>
-            <div class="paper-wrap"></div>
         </div>
+        <button id="showPopupBtn">Open Birthday Wishes</button>
     </div>
 
     <script>
         document.getElementById('showPopupBtn').addEventListener('click', function() {
-            document.getElementById('popupBg').style.display = 'block';
-        });
-
-        document.getElementById('closePopupBtn').addEventListener('click', function() {
-            document.getElementById('popupBg').style.display = 'none';
+            alert('Happy Birthday!');
         });
     </script>
 </body>
