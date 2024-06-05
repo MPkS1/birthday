@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Celebration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            color: black;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .container {
+            padding: 20px;
+            z-index: 1;
+            position: relative;
+        }
+        .welcome {
+            padding: 50px;
+            font-size: 2em;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .about {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 40px 0;
+        }
+        .poem {
+            font-size: 1.5em;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            max-width: 50%;
+            margin-right: 20px;
+        }
+        .slideshow-container {
+            max-width: 600px;
+            position: relative;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .slides {
+            display: none;
+        }
+        .slides img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background-color: rgba(255, 0, 0, 0.7);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            animation: fall 5s linear infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="welcome">
+            <p>Happy Birthday RadhaMadhav</p>
+        </div>
+
+        <div class="about">
+            <div class="poem">
+                <p>Today and always, we say happy birthday,<br>
+                May your heart be light, your worries swept away.<br>
+                May you always feel the warmth of happiness,<br>
+                In every moment, may you find joy's caress.<br><br>
+                And may you live to fulfill your life's journey,<br>
+                With courage and love, let your spirit be free.<br>
+                Happy birthday, my son, the joy of our strength,<br>
+                In our hearts, you'll always go to great lengths.</p>
+            </div>
+            <div class="slideshow-container">
+                <!-- Slideshow images -->
+                <div class="slides fade">
+                    <img src="images/imag1.jpg" alt="Image 1">
+                </div>
+                <div class="slides fade">
+                    <img src="images/image2.jpg" alt="Image 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio controls autoplay loop>
+        <source src="audio/audio1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("slides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+
+        // Create balloons and confetti with random animations
+        function createBalloonsAndConfetti() {
+            for (let i = 0; i < 50; i++) {
+                let balloon = document.createElement("div");
+                balloon.className = "balloon";
+                balloon.style.left = Math.random() * 100 + "vw";
+                balloon.style.bottom = Math.random() * 100 + "vh";
+                balloon.style.backgroundColor = "rgba(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ",0.7)";
+                balloon.style.animationDuration = Math.random() * 5 + 5 + "s";
+                document.body.appendChild(balloon);
+            }
+
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement("div");
+                confetti.className = "confetti";
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.top = Math.random() * 100 + "vh";
+                confetti.style.backgroundColor = "rgba(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ",0.7)";
+                confetti.style.animationDuration = Math.random() * 3 + 3 + "s";
+                document.body.appendChild(confetti);
+            }
+        }
+
+        createBalloonsAndConfetti();
+    </script>
+</body>
+</html>
