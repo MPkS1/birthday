@@ -11,12 +11,20 @@
             color: black;
             text-align: center;
             position: relative;
-            overflow: hidden;
+            overflow: auto;
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: auto;
         }
         .container {
             padding: 20px;
             z-index: 1;
             position: relative;
+            min-width: 600px; /* Ensure minimum width */
         }
         .welcome {
             padding: 50px;
@@ -30,6 +38,7 @@
             justify-content: center;
             align-items: flex-start;
             margin: 40px 0;
+            flex-wrap: wrap; /* Allow items to wrap on small screens */
         }
         .poem {
             font-size: 1.5em;
@@ -37,7 +46,7 @@
             background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             max-width: 50%;
-            margin-right: 20px;
+            margin: 20px;
         }
         .slideshow-container {
             max-width: 600px;
@@ -46,6 +55,7 @@
             background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             padding: 10px;
+            margin: 20px;
         }
         .slides {
             display: none;
@@ -100,12 +110,25 @@
         audio {
             display: none;
         }
+        .audio-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .audio-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="welcome">
-            <p>Happy Birthday RadhaMadhav</p>
+            <p>Welcome to the Birthday Celebration of [Birthday Boy's Name]</p>
         </div>
 
         <div class="about">
@@ -124,15 +147,14 @@
                 <div class="slides fade">
                     <img src="images/imag1.jpg" alt="Image 1">
                 </div>
-                <div class="slides fade">
-                    <img src="images/image2.jpg" alt="Image 2">
-                </div>
             </div>
         </div>
+
+        <button class="audio-button" onclick="playAudio()">Play Music</button>
     </div>
 
-    <audio controls autoplay loop>
-        <source src="audio/audio1.mp3" type="audio/mpeg">
+    <audio id="background-audio" loop>
+        <source src="audio1.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
@@ -175,7 +197,16 @@
             }
         }
 
-        createBalloonsAndConfetti();
+        function playAudio() {
+            const audio = document.getElementById('background-audio');
+            audio.play().catch(error => {
+                console.error("Error playing audio:", error);
+            });
+        }
+
+        window.onload = () => {
+            createBalloonsAndConfetti();
+        };
     </script>
 </body>
 </html>
